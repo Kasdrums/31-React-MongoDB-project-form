@@ -27,7 +27,7 @@ ContactSchema = new Schema({
 
 const Contact = mongoose.model('Contact', ContactSchema)
 
-App.post('/api/contact', (req, res) => {
+app.post('/api/contact', (req, res) => {
 	const { name, email, message } = req.body
 
 	const newContact = new Contact({
