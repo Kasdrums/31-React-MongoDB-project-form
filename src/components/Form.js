@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import axios from 'axios'
+
 const Form = () => {
 	const [formData, setFormData] = useState({
 		name: '',
@@ -11,9 +14,16 @@ const Form = () => {
 			[event.target.name]: event.target.value,
 		})
 	}
+	const handleSubmit = (event) => {
+		event.preventDefault()
+	}
+	axios
+		.post('/api/contact', formData)
+		.then((response) => console.log(response.data))
+		.catch((eror) => console.log(eror))
 
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<label>
 				Name:
 				<input
